@@ -500,7 +500,7 @@
                     </button>
                 </div>
             </div>
-            <div class="formQuiz__step formQuiz__step_5 formQuiz__step_2_1">
+            <div class="formQuiz__step formQuiz__step_5 formQuiz__step_2_2">
                 <div class="formQuiz__header">
                     <h2 class="formQuiz__h2">
                         Walk-in
@@ -708,106 +708,97 @@
             showStep(currentStep);
 
 
-                $('#room').change(function () {
-                    let selectedRoom = $(this).val();
+            $('#room').change(function () {
+                let selectedRoom = $(this).val();
 
-                    if (selectedRoom === 'Bedroom') {
-                        showStep(0); // Открываем шаг 0 для Bedroom
-                    } else if (selectedRoom === 'Walk-in') {
-                        showStep(3); // Открываем шаг 3 для Walk-in
-                    }
-                });
-
-                $('#room_2').change(function () {
-                    let selectedRoom = $(this).val();
-
-                    if (selectedRoom === 'Bedroom') {
-                        showStep(0); // Открываем шаг 0 для Bedroom
-                    } else if (selectedRoom === 'Walk-in') {
-                        showStep(3); // Открываем шаг 3 для Walk-in
-                    }
-                });
-
-            // Обработчик клика по кнопке "Next"
-            $('.formQuiz__btn_go').click(function () {
-                if (currentStep < steps.length - 1) {
-                    let selectedRoom = $('#room').val();
-                    if (currentStep === 0 || 3) {
-                        // Обработчик выбора опции в селекте
-                        if (selectedRoom === 'Bedroom') {
-                            // Если выбрана опция "Bedroom", открываем соответствующие шаги
-                            showStep(0); // formQuiz__step_2_1
-
-                            let selectedImageSrc = document.querySelector('.formQuizVar__item_1choose .formQuizVar__input:checked + .formQuizVar__img');
-                            if (selectedImageSrc) {
-                                let src = selectedImageSrc.getAttribute('src');
-                                document.querySelector('.bedroomSelectedImg').src = src;
-
-                                console.log(src)
-
-                                if (src.endsWith('1.1.png') || src.endsWith('1.2.png')) {
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_a').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'block';
-                                } else if (src.endsWith('1.3.png')) {
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_d').style.display = 'block';
-                                } else if (src.endsWith('1.4.png')) {
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_a').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_d').style.display = 'block';
-
-                                } else {
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_a').style.display = 'none';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'none';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'none';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_d').style.display = 'none';
-                                }
-                            }
-
-                        } else if (selectedRoom === 'Walk-in') {
-                            // Если выбрана опция "Walk-in", открываем соответствующие шаги
-                            showStep(3); // formQuiz__step_3_1
-
-
-                            let selectedImageSrc = document.querySelector('.formQuizVar__item_1choose .formQuizVar__input:checked + .formQuizVar__img');
-                            if (selectedImageSrc) {
-                                let src = selectedImageSrc.getAttribute('src');
-                                document.querySelector('.walkInSelectedImg').src = src;
-
-                                console.log(src)
-
-                                if (src.endsWith('1.1.png') || src.endsWith('1.2.png')) {
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_a').style.display = 'block';
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'block';
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'block';
-                                } else if (src.endsWith('1.3.png')) {
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'block';
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'block';
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_d').style.display = 'block';
-                                } else if (src.endsWith('1.4.png')) {
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_a').style.display = 'block';
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'block';
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'block';
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_d').style.display = 'block';
-
-                                } else {
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_a').style.display = 'none';
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'none';
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'none';
-                                    document.querySelector('.bottomInputs_2 .bottomInputs__input_d').style.display = 'none';
-                                }
-                            }
-                        }
-                    }
-
-
-                    // Скрываем текущий шаг и открываем следующий
-                    showStep(currentStep + 1);
+                if (selectedRoom === 'Bedroom') {
+                    showStep(0); // Открываем шаг 0 для Bedroom
+                } else if (selectedRoom === 'Walk-in') {
+                    showStep(3); // Открываем шаг 3 для Walk-in
                 }
             });
+
+            $('#room_2').change(function () {
+                let selectedRoom = $(this).val();
+
+                if (selectedRoom === 'Bedroom') {
+                    showStep(0); // Открываем шаг 0 для Bedroom
+                } else if (selectedRoom === 'Walk-in') {
+                    showStep(3); // Открываем шаг 3 для Walk-in
+                }
+            });
+
+       // Обработчик клика по кнопке "Next"
+$('.formQuiz__btn_go').click(function () {
+    if (currentStep < steps.length - 1) {
+        let selectedRoom = $('#room').val();
+
+        if (currentStep === 0 || 3) {
+            // Обработчик выбора опции в селекте
+            if (selectedRoom === 'Bedroom') {
+                // Если выбрана опция "Bedroom", открываем соответствующие шаги
+                showStep(0); // formQuiz__step_2_1
+                let selectedImageSrc = document.querySelector('.formQuizVar__item_1choose .formQuizVar__input:checked + .formQuizVar__img');
+                if (selectedImageSrc) {
+                    let src = selectedImageSrc.getAttribute('src');
+                    document.querySelector('.bedroomSelectedImg').src = src;
+                    console.log(src + '1')
+                    if (src.endsWith('1.1.png') || src.endsWith('1.2.png')) {
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_a').style.display = 'block';
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'block';
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'block';
+                    } else if (src.endsWith('1.3.png')) {
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'block';
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'block';
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_d').style.display = 'block';
+                    } else if (src.endsWith('1.4.png')) {
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_a').style.display = 'block';
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'block';
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'block';
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_d').style.display = 'block';
+                    } else {
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_a').style.display = 'none';
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'none';
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'none';
+                        document.querySelector('.bottomInputs_1 .bottomInputs__input_d').style.display = 'none';
+                    }
+                }
+            } else if (selectedRoom === 'Walk-in') {
+                // Если выбрана опция "Walk-in", открываем соответствующие шаги
+                showStep(3); // formQuiz__step_3_1
+                let selectedImageSrc = document.querySelector('.formQuizVar__item_2choose .formQuizVar__input:checked + .formQuizVar__img');
+                if (selectedImageSrc) {
+                    let src = selectedImageSrc.getAttribute('src');
+                    document.querySelector('.walkInSelectedImg').src = src;
+                    console.log(src + '2')
+                    if (src.endsWith('1.1.png') || src.endsWith('1.2.png')) {
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_a').style.display = 'block';
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'block';
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'block';
+                    } else if (src.endsWith('1.3.png')) {
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'block';
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'block';
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_d').style.display = 'block';
+                    } else if (src.endsWith('1.4.png')) {
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_a').style.display = 'block';
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'block';
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'block';
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_d').style.display = 'block';
+                    } else {
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_a').style.display = 'none';
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'none';
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'none';
+                        document.querySelector('.bottomInputs_2 .bottomInputs__input_d').style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        // Скрываем текущий шаг и открываем следующий
+        showStep(currentStep + 1);
+    }
+});
+
 
 
 
