@@ -28,11 +28,17 @@
 
         .formQuiz__btn {
             padding: 8px 16px;
-            border-radius: 10px;
+            border-radius: 50px;
             border: none;
             background-color: #cc1616;
             color: #fff;
             cursor: pointer;
+        }
+
+        .formQuiz__btn_back {
+            background-color: transparent;
+            border: 1px solid #cc1616;
+            color: #cc1616;
         }
 
         .formQuizVar__item {
@@ -54,8 +60,7 @@
         }
 
 
-        .walkInSelectedImg,
-        .bedroomSelectedImg {
+        .ChambreRoomSelectedImg {
             display: block;
             width: 100%;
         }
@@ -96,6 +101,12 @@
             margin-top: 20px;
             display: flex;
             justify-content: space-between;
+            gap: 8px;
+        }
+
+        .formQuiz__btnsEnd {
+            display: flex;
+            gap: 8px;
         }
 
         .bottomInputs {
@@ -125,6 +136,15 @@
             flex-wrap: wrap;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            transition: all .3s;
+            padding: 5px;
+        }
+
+        .formQuiz__label:hover {
+            border: 1px solid #cc16169a;
         }
 
         .formQuizVar__input {
@@ -183,8 +203,61 @@
             width: 100%;
             border: 1px solid #9c9c9b;
             padding: 8px 16px;
+            height: 80px;
             resize: none;
             border-radius: 10px;
+        }
+
+        .formQuiz__h3 {
+            margin-bottom: 12px;
+        }
+
+        .counter {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            width: 120px;
+            margin: 0 auto 10px auto;
+        }
+
+        .counter__btn {
+            background: #cc1616;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+
+        .formQuiz__quan {
+            width: 40px;
+            text-align: center;
+        }
+
+        @media(max-width:767px) {
+
+            .bottomInputs,
+            .formQuizVar {
+                flex-direction: column;
+            }
+
+            .formQuiz__btnsEnd,
+            .formQuiz__btns {
+                flex-direction: column-reverse;
+                gap: 16px;
+            }
+        }
+
+        .formQuiz__form {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .formQuiz__formInput {
+            padding: 8px 12px;
+            border-radius: 50px;
+            border: 1px solid #ccc;
         }
     </style>
 </head>
@@ -198,8 +271,10 @@
                         Dans quel chambre est le placard? | Where is the closet located?
                     </h2>
                     <select id="room" class="room">
-                        <option value="Bedroom">Bedroom</option>
-                        <option value="Walk-in">Walk-in</option>
+                        <option value="ChambreRoom1">Chambre | Room 1</option>
+                        <option value="ChambreRoom2">Chambre | Room 2</option>
+                        <option value="ChambreRoom3">Chambre | Room 3</option>
+                        <option value="ChambreRoom3">Chambre | Room 4</option>
                     </select>
                 </div>
 
@@ -208,40 +283,40 @@
                         Choisissez un type de votre placard | Choose a type of your closet
                     </h3>
                     <div class="formQuizVar">
-                        <div class="formQuizVar__item formQuizVar__item_1choose">
+                        <div class="formQuizVar__item">
                             <label class="formQuiz__label" for="q1_1">
                                 <span>
                                     Droit Straght
                                 </span>
                                 <input checked class="formQuizVar__input" type="radio" id="q1_1" name="q1">
-                                <img class="formQuizVar__img" src="1.1.png" alt="">
+                                <img class="formQuizVar__img" data-src="1.1.png" src="1.1.png" alt="">
                             </label>
                         </div>
-                        <div class="formQuizVar__item formQuizVar__item_1choose">
+                        <div class="formQuizVar__item">
                             <label class="formQuiz__label" for="q1_2">
                                 <span>
                                     L-forme
                                 </span>
                                 <input class="formQuizVar__input" type="radio" id="q1_2" name="q1">
-                                <img class="formQuizVar__img" src="1.2.png" alt="">
+                                <img class="formQuizVar__img" data-src="1.2.png" src="1.2.png" alt="">
                             </label>
                         </div>
-                        <div class="formQuizVar__item formQuizVar__item_1choose">
+                        <div class="formQuizVar__item">
                             <label class="formQuiz__label" for="q1_3">
                                 <span>
                                     Deux Cotes | Two sides
                                 </span>
                                 <input class="formQuizVar__input" type="radio" id="q1_3" name="q1">
-                                <img class="formQuizVar__img" src="1.3.png" alt="">
+                                <img class="formQuizVar__img" data-src="1.3.png" src="1.3.png" alt="">
                             </label>
                         </div>
-                        <div class="formQuizVar__item formQuizVar__item_1choose">
+                        <div class="formQuizVar__item">
                             <label class="formQuiz__label" for="q1_4">
                                 <span>
                                     U - forme
                                 </span>
                                 <input class="formQuizVar__input" type="radio" id="q1_4" name="q1">
-                                <img class="formQuizVar__img" src="1.4.png" alt="">
+                                <img class="formQuizVar__img" data-src="1.4.png" src="1.4.png" alt="">
                             </label>
                         </div>
                     </div>
@@ -258,11 +333,11 @@
                 </div>
             </div>
 
-            <!-- Bedroom -->
-            <div class="formQuiz__step formQuiz__step_2 formQuiz__step_2_1">
+            <!-- ChambreRoom1 -->
+            <div class="formQuiz__step formQuiz__step_2 formQuiz__room_1">
                 <div class="formQuiz__header">
                     <h2 class="formQuiz__h2">
-                        Bedroom
+                        ChambreRoom1
                     </h2>
                 </div>
 
@@ -271,7 +346,7 @@
                         Placard droit | Straught closet
                     </h3>
                     <div class="formQuizVar">
-                        <img src="" class="bedroomSelectedImg" alt="">
+                        <img src="" class="ChambreRoomSelectedImg ChambreRoom1SelectedImg" alt="">
                     </div>
                 </div>
                 <div class="formQuiz__bodyBottom">
@@ -301,11 +376,11 @@
                     </button>
                 </div>
             </div>
-            <div class="formQuiz__step formQuiz__step_3 formQuiz__step_2_2">
+            <div class="formQuiz__step formQuiz__step_3 formQuiz__room_1">
 
                 <div class="formQuiz__header">
                     <h2 class="formQuiz__h2">
-                        Bedroom
+                        ChambreRoom1
                     </h2>
                 </div>
 
@@ -324,7 +399,11 @@
                                     <input class="formQuizVar__input" type="checkbox" id="q2_1" name="q2_1">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.1.png" alt="">
                                 </div>
                             </label>
@@ -339,7 +418,11 @@
                                     <input class="formQuizVar__input" type="checkbox" id="q2_2" name="q2_2">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.2.png" alt="">
                                 </div>
                             </label>
@@ -354,7 +437,11 @@
                                     <input class="formQuizVar__input" type="checkbox" id="q2_3" name="q2_3">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.3.png" alt="">
                                 </div>
 
@@ -370,7 +457,11 @@
                                     <input class="formQuizVar__input" type="checkbox" id="q2_4" name="q2_4">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.4.png" alt="">
                                 </div>
                             </label>
@@ -385,7 +476,11 @@
                                     <input class="formQuizVar__input" type="checkbox" id="q2_5" name="q2_5">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.5.png" alt="">
                                 </div>
                             </label>
@@ -400,7 +495,11 @@
                                     <input class="formQuizVar__input" type="checkbox" id="q2_6" name="q2_6">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.6.png" alt="">
                                 </div>
                             </label>
@@ -414,7 +513,7 @@
                         </span>
                         <div class="formQuizVarBottom__item">
                             <img src="3.7.png" alt="">
-                            <input type="number" placeholder="0-30">
+                            <input type="number" placeholder="0-30" class="formQuizVarBottom__input">
                         </div>
                         <div class="formQuizVarBottom__item">
                             <textarea placeholder="Autre option | Another option"></textarea>
@@ -426,84 +525,23 @@
                     <button class="formQuiz__btn formQuiz__btn_back" type="button">
                         Retour| Back
                     </button>
-                    <button class="formQuiz__btn formQuiz__btn_go" type="button">
-                        Suivant | Next
-                    </button>
-                </div>
-            </div>
-
-
-
-            <!-- Walk-in -->
-            <div class="formQuiz__step formQuiz__step_4 formQuiz__step_3_1">
-                <div class="formQuiz__header">
-                    <h2 class="formQuiz__h2">
-                        Dans quel chambre est le placard? | Where is the closet located?
-                    </h2>
-                    <select id="room_2" class="room">
-                        <option value="Walk-in">Walk-in</option>
-                        <option value="Bedroom">Bedroom</option>
-                    </select>
-                </div>
-
-                <div class="formQuiz__body">
-                    <h3 class="formQuiz__h3">
-                        Choisissez un type de votre placard | Choose a type of your closet
-                    </h3>
-                    <div class="formQuizVar">
-                        <div class="formQuizVar__item formQuizVar__item_2choose">
-                            <label class="formQuiz__label" for="q1_1w">
-                                <span>
-                                    Droit Straght
-                                </span>
-                                <input checked class="formQuizVar__input" type="radio" id="q1_1w" name="q1w">
-                                <img class="formQuizVar__img" src="1.1.png" alt="">
-                            </label>
-                        </div>
-                        <div class="formQuizVar__item formQuizVar__item_2choose">
-                            <label class="formQuiz__label" for="q1_2w">
-                                <span>
-                                    L-forme
-                                </span>
-                                <input class="formQuizVar__input" type="radio" id="q1_2w" name="q1w">
-                                <img class="formQuizVar__img" src="1.2.png" alt="">
-                            </label>
-                        </div>
-                        <div class="formQuizVar__item formQuizVar__item_2choose">
-                            <label class="formQuiz__label" for="q1_3w">
-                                <span>
-                                    Deux Cotes | Two sides
-                                </span>
-                                <input class="formQuizVar__input" type="radio" id="q1_3w" name="q1w">
-                                <img class="formQuizVar__img" src="1.3.png" alt="">
-                            </label>
-                        </div>
-                        <div class="formQuizVar__item formQuizVar__item_2choose">
-                            <label class="formQuiz__label" for="q1_4w">
-                                <span>
-                                    U - forme
-                                </span>
-                                <input class="formQuizVar__input" type="radio" id="q1_4w" name="q1w">
-                                <img class="formQuizVar__img" src="1.4.png" alt="">
-                            </label>
-                        </div>
+                    <div class="formQuiz__btnsEnd">
+                        <button class="formQuiz__btn formQuiz__btn_goToStart" type="button">
+                            Une pièce de plus | One more room
+                        </button>
+                        <button class="formQuiz__btn formQuiz__btn_goToEnd" type="button">
+                            Passer a devis |
+                            Go to quote
+                        </button>
                     </div>
                 </div>
-
-                <div class="formQuiz__btns">
-                    <button class="formQuiz__btn formQuiz__btn_back" style="opacity: 0; visibility: hidden;"
-                        type="button">
-                        Suivant | Back
-                    </button>
-                    <button class="formQuiz__btn formQuiz__btn_go" type="button">
-                        Suivant | Next
-                    </button>
-                </div>
             </div>
-            <div class="formQuiz__step formQuiz__step_5 formQuiz__step_2_2">
+
+            <!-- ChambreRoom2 -->
+            <div class="formQuiz__step formQuiz__step_4 formQuiz__room_2">
                 <div class="formQuiz__header">
                     <h2 class="formQuiz__h2">
-                        Walk-in
+                        ChambreRoom2
                     </h2>
                 </div>
 
@@ -512,7 +550,7 @@
                         Placard droit | Straught closet
                     </h3>
                     <div class="formQuizVar">
-                        <img src="" class="walkInSelectedImg" alt="">
+                        <img src="" class="ChambreRoomSelectedImg ChambreRoom2SelectedImg" alt="">
                     </div>
                 </div>
                 <div class="formQuiz__bodyBottom">
@@ -542,11 +580,11 @@
                     </button>
                 </div>
             </div>
-            <div class="formQuiz__step formQuiz__step_6 formQuiz__step_2_2">
+            <div class="formQuiz__step formQuiz__step_5 formQuiz__room_2">
 
                 <div class="formQuiz__header">
                     <h2 class="formQuiz__h2">
-                        Walk-in
+                        ChambreRoom2
                     </h2>
                 </div>
 
@@ -556,31 +594,39 @@
                     </h3>
                     <div class="formQuizVar">
                         <div class="formQuizVar__item">
-                            <label class="formQuiz__label" for="q2_1w">
+                            <label class="formQuiz__label" for="q2_1_2">
                                 <div class="step3__row">
                                     <span>
                                         Panier à linge
                                         Laundry basket
                                     </span>
-                                    <input class="formQuizVar__input" type="checkbox" id="q2_1w" name="q2_1w">
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_1_2" name="q2_1_2">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.1.png" alt="">
                                 </div>
                             </label>
                         </div>
                         <div class="formQuizVar__item">
-                            <label class="formQuiz__label" for="q2_2w">
+                            <label class="formQuiz__label" for="q2_2_2">
                                 <div class="step3__row">
                                     <span>
                                         Panier à linge
                                         Laundry basket
                                     </span>
-                                    <input class="formQuizVar__input" type="checkbox" id="q2_2w" name="q2_2w">
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_2_2" name="q2_2_2">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.2.png" alt="">
                                 </div>
                             </label>
@@ -592,41 +638,53 @@
                                         Panier à linge
                                         Laundry basket
                                     </span>
-                                    <input class="formQuizVar__input" type="checkbox" id="q2_3w" name="q2_3w">
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_3_2" name="q2_3_2">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.3.png" alt="">
                                 </div>
 
                             </label>
                         </div>
                         <div class="formQuizVar__item">
-                            <label class="formQuiz__label" for="q2_4w">
+                            <label class="formQuiz__label" for="q2_4_2">
                                 <div class="step3__row">
                                     <span>
                                         Panier à linge
                                         Laundry basket
                                     </span>
-                                    <input class="formQuizVar__input" type="checkbox" id="q2_4w" name="q2_4w">
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_4_2" name="q2_4_2">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.4.png" alt="">
                                 </div>
                             </label>
                         </div>
                         <div class="formQuizVar__item">
-                            <label class="formQuiz__label" for="q2_5w">
+                            <label class="formQuiz__label" for="q2_5_2">
                                 <div class="step3__row">
                                     <span>
                                         Panier à linge
                                         Laundry basket
                                     </span>
-                                    <input class="formQuizVar__input" type="checkbox" id="q2_5w" name="q2_5w">
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_5_2" name="q2_5_2">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.5.png" alt="">
                                 </div>
                             </label>
@@ -641,7 +699,11 @@
                                     <input class="formQuizVar__input" type="checkbox" id="q2_6w" name="q2_6w">
                                 </div>
                                 <div class="step3__row">
-                                    <input type="text" placeholder="Quantite / Quanite" class="formQuiz__quan">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
                                     <img class="formQuizVar__img formQuizVar__img_3" src="3.6.png" alt="">
                                 </div>
                             </label>
@@ -655,7 +717,7 @@
                         </span>
                         <div class="formQuizVarBottom__item">
                             <img src="3.7.png" alt="">
-                            <input type="number" placeholder="0-30">
+                            <input type="number" placeholder="0-30" class="formQuizVarBottom__input">
                         </div>
                         <div class="formQuizVarBottom__item">
                             <textarea placeholder="Autre option | Another option"></textarea>
@@ -667,155 +729,645 @@
                     <button class="formQuiz__btn formQuiz__btn_back" type="button">
                         Retour| Back
                     </button>
+                    <div class="formQuiz__btnsEnd">
+                        <button class="formQuiz__btn formQuiz__btn_goToStart" type="button">
+                            Une pièce de plus | One more room
+                        </button>
+                        <button class="formQuiz__btn formQuiz__btn_goToEnd" type="button">
+                            Passer a devis |
+                            Go to quote
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ChambreRoom3 -->
+            <div class="formQuiz__step formQuiz__step_6 formQuiz__room_3">
+                <div class="formQuiz__header">
+                    <h2 class="formQuiz__h2">
+                        ChambreRoom3
+                    </h2>
+                </div>
+
+                <div class="formQuiz__body">
+                    <h3 class="formQuiz__h3">
+                        Placard droit | Straught closet
+                    </h3>
+                    <div class="formQuizVar">
+                        <img src="" class="ChambreRoomSelectedImg ChambreRoom3SelectedImg" alt="">
+                    </div>
+                </div>
+                <div class="formQuiz__bodyBottom">
+                    <h3 class="formQuiz__h3">
+                        Rentre les dimentions de l'espace | Enter the space dimentions
+                    </h3>
+                    <p>
+                        Pouces | Inches
+                    </p>
+                    <div class="bottomInputs bottomInputs_3">
+                        <input type="text" class="bottomInputs__input bottomInputs__input_a"
+                            placeholder="A - Largeur | Width">
+                        <input type="text" class="bottomInputs__input bottomInputs__input_b"
+                            placeholder="B - Hauteur | Height">
+                        <input type="text" class="bottomInputs__input bottomInputs__input_c"
+                            placeholder="C - Profondeur | Depth">
+                        <input type="text" class="bottomInputs__input bottomInputs__input_d"
+                            placeholder="D - Profondeur | Depth">
+                    </div>
+                </div>
+                <div class="formQuiz__btns">
+                    <button class="formQuiz__btn formQuiz__btn_back" type="button">
+                        Retour| Back
+                    </button>
                     <button class="formQuiz__btn formQuiz__btn_go" type="button">
                         Suivant | Next
                     </button>
                 </div>
             </div>
-        </div>
+            <div class="formQuiz__step formQuiz__step_7 formQuiz__room_3">
 
+                <div class="formQuiz__header">
+                    <h2 class="formQuiz__h2">
+                        ChambreRoom3
+                    </h2>
+                </div>
 
-        <!-- last -->
-        <div class="formQuiz__step formQuiz__step_7 formQuiz__step_3">
-            step 4
-            <div class="formQuiz__btns">
-                <button class="formQuiz__btn formQuiz__btn_back" type="button">
-                    Retour| Back
-                </button>
-                <button class="formQuiz__btn formQuiz__btn_go" type="button">
-                    Suivant | Next
-                </button>
+                <div class="formQuiz__body formQuiz__body_3">
+                    <h3 class="formQuiz__h3">
+                        Choisissez un type de votre placard | Choose a type of your closet
+                    </h3>
+                    <div class="formQuizVar">
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_1_3">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_1_3" name="q2_1_3">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.1.png" alt="">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_2_3">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_2_3" name="q2_2_3">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.2.png" alt="">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_3">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_3_3" name="q2_3_3">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.3.png" alt="">
+                                </div>
+
+                            </label>
+                        </div>
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_4_3">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_4_3" name="q2_4_3">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.4.png" alt="">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_5_3">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_5_3" name="q2_5_3">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.5.png" alt="">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_6w">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_6w" name="q2_6w">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.6.png" alt="">
+                                </div>
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="formQuizVarBottom">
+                        <span>
+                            Nombre de tiroirs Number of drawers
+                        </span>
+                        <div class="formQuizVarBottom__item">
+                            <img src="3.7.png" alt="">
+                            <input type="number" placeholder="0-30" class="formQuizVarBottom__input">
+                        </div>
+                        <div class="formQuizVarBottom__item">
+                            <textarea placeholder="Autre option | Another option"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formQuiz__btns">
+                    <button class="formQuiz__btn formQuiz__btn_back" type="button">
+                        Retour| Back
+                    </button>
+                    <div class="formQuiz__btnsEnd">
+                        <button class="formQuiz__btn formQuiz__btn_goToStart" type="button">
+                            Une pièce de plus | One more room
+                        </button>
+                        <button class="formQuiz__btn formQuiz__btn_goToEnd" type="button">
+                            Passer a devis |
+                            Go to quote
+                        </button>
+                    </div>
+                </div>
             </div>
+
+
+            <!-- ChambreRoom4 -->
+            <div class="formQuiz__step formQuiz__step_8 formQuiz__room_4">
+                <div class="formQuiz__header">
+                    <h2 class="formQuiz__h2">
+                        ChambreRoom4
+                    </h2>
+                </div>
+
+                <div class="formQuiz__body">
+                    <h3 class="formQuiz__h3">
+                        Placard droit | Straught closet
+                    </h3>
+                    <div class="formQuizVar">
+                        <img src="" class="ChambreRoomSelectedImg ChambreRoom4SelectedImg" alt="">
+                    </div>
+                </div>
+                <div class="formQuiz__bodyBottom">
+                    <h3 class="formQuiz__h3">
+                        Rentre les dimentions de l'espace | Enter the space dimentions
+                    </h3>
+                    <p>
+                        Pouces | Inches
+                    </p>
+                    <div class="bottomInputs bottomInputs_4">
+                        <input type="text" class="bottomInputs__input bottomInputs__input_a"
+                            placeholder="A - Largeur | Width">
+                        <input type="text" class="bottomInputs__input bottomInputs__input_b"
+                            placeholder="B - Hauteur | Height">
+                        <input type="text" class="bottomInputs__input bottomInputs__input_c"
+                            placeholder="C - Profondeur | Depth">
+                        <input type="text" class="bottomInputs__input bottomInputs__input_d"
+                            placeholder="D - Profondeur | Depth">
+                    </div>
+                </div>
+                <div class="formQuiz__btns">
+                    <button class="formQuiz__btn formQuiz__btn_back" type="button">
+                        Retour| Back
+                    </button>
+                    <button class="formQuiz__btn formQuiz__btn_go" type="button">
+                        Suivant | Next
+                    </button>
+                </div>
+            </div>
+            <div class="formQuiz__step formQuiz__step_9 formQuiz__room_4">
+
+                <div class="formQuiz__header">
+                    <h2 class="formQuiz__h2">
+                        ChambreRoom4
+                    </h2>
+                </div>
+
+                <div class="formQuiz__body formQuiz__body_3">
+                    <h3 class="formQuiz__h3">
+                        Choisissez un type de votre placard | Choose a type of your closet
+                    </h3>
+                    <div class="formQuizVar">
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_1_4">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_1_4" name="q2_1_4">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.1.png" alt="">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_2_4">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_2_4" name="q2_2_4">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.2.png" alt="">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_3_4">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_3_4" name="q2_3_4">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.3.png" alt="">
+                                </div>
+
+                            </label>
+                        </div>
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_4_4">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_4_4" name="q2_4_4">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.4.png" alt="">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_5_4">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_5_4" name="q2_5_4">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.5.png" alt="">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="formQuizVar__item">
+                            <label class="formQuiz__label" for="q2_6_4">
+                                <div class="step3__row">
+                                    <span>
+                                        Panier à linge
+                                        Laundry basket
+                                    </span>
+                                    <input class="formQuizVar__input" type="checkbox" id="q2_6_4" name="q2_6_4">
+                                </div>
+                                <div class="step3__row">
+                                    <div class="counter">
+                                        <button class="counter__btn decrement" type="button">-</button>
+                                        <input type="text" class="formQuiz__quan count" value="0">
+                                        <button class="counter__btn increment" type="button">+</button>
+                                    </div>
+                                    <img class="formQuizVar__img formQuizVar__img_3" src="3.6.png" alt="">
+                                </div>
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="formQuizVarBottom">
+                        <span>
+                            Nombre de tiroirs Number of drawers
+                        </span>
+                        <div class="formQuizVarBottom__item">
+                            <img src="3.7.png" alt="">
+                            <input type="number" placeholder="0-30" class="formQuizVarBottom__input">
+                        </div>
+                        <div class="formQuizVarBottom__item">
+                            <textarea placeholder="Autre option | Another option"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formQuiz__btns">
+                    <button class="formQuiz__btn formQuiz__btn_back" type="button">
+                        Retour| Back
+                    </button>
+                    <div class="formQuiz__btnsEnd">
+                        <button class="formQuiz__btn formQuiz__btn_goToStart" type="button">
+                            Une pièce de plus | One more room
+                        </button>
+                        <button class="formQuiz__btn formQuiz__btn_goToEnd" type="button">
+                            Passer a devis |
+                            Go to quote
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- last -->
+            <div class="formQuiz__step formQuiz__step_10 formQuiz__step_3">
+                <div class="formQuiz__header">
+                    <h2 class="formQuiz__h2">
+                        Rentrez vos information pour obtenir un devis
+                        Enter your information to get a quote
+                    </h2>
+                    <div class="formQuiz__form">
+                        <input class="formQuiz__formInput" type="text" name="" id=""
+                            placeholder="Votre nom | Your name">
+                        <input class="formQuiz__formInput" type="tel" name="" id="" placeholder="Téléphone | Phone">
+                        <input class="formQuiz__formInput" type="text" name="" id="" placeholder="Email">
+                        <input class="formQuiz__formInput" type="text" name="" id=""
+                            placeholder="Code postale | Postal Code">
+                        <textarea class="formQuiz__formInput formQuiz__formInput_txtarea" name="" id=""
+                            placeholder="Ajoutez vos commentaires | Add your comments"></textarea>
+                        <input type="file" placeholder="Envoyez-nous une photo
+                        ou un petit croquis de vos idées">
+                    </div>
+                </div>
+                <div class="formQuiz__btns">
+                    <button class="formQuiz__btn  formQuiz__btn_goToStart" type="button">
+                        Une pièce de plus | One more room
+                    </button>
+                    <button class="formQuiz__btn" type="submit">
+                        Obtenir le devis
+                        Get a quote
+                    </button>
+                </div>
+            </div>
+
         </div>
-        </div>
+
     </form>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function () {
-            // Находим все элементы с классом formQuiz__step
-            let steps = $('.formQuiz__step');
-            let currentStep = 0;
+        // Получите все кнопки "Next" и "Back"
+        const nextButton = document.querySelectorAll('.formQuiz__btn_go');
+        const backButton = document.querySelectorAll('.formQuiz__btn_back');
+        const startBtn = document.querySelectorAll('.formQuiz__btn_goToStart')
+        const endBtn = document.querySelectorAll('.formQuiz__btn_goToEnd')
+        let currentStep = 0;
+        const steps = document.querySelectorAll('.formQuiz__step');
 
-            // Функция для скрытия всех шагов кроме указанного
-            function showStep(stepIndex) {
-                steps.hide();
-                steps.eq(stepIndex).show();
-                currentStep = stepIndex;
-            }
+        // Функция для скрытия всех шагов кроме указанного
+        function showStep(stepIndex) {
+            steps.forEach((step, index) => {
+                step.style.display = index === stepIndex ? 'block' : 'none';
+            });
+            currentStep = stepIndex;
+        }
 
-            // Скрываем все шаги, кроме первого
-            showStep(currentStep);
+        startBtn.forEach(i => {
+            i.addEventListener('click', () => {
+                showStep(0);
+                const roomSelect = document.getElementById('room'); // Получите элемент <select>
+                const currentOptionIndex = roomSelect.selectedIndex; // Получите индекс текущего выбранного <option>
 
-
-            $('#room').change(function () {
-                let selectedRoom = $(this).val();
-
-                if (selectedRoom === 'Bedroom') {
-                    showStep(0); // Открываем шаг 0 для Bedroom
-                } else if (selectedRoom === 'Walk-in') {
-                    showStep(3); // Открываем шаг 3 для Walk-in
+                // Проверьте, что следующий <option> существует
+                if (currentOptionIndex < roomSelect.options.length - 1) {
+                    roomSelect.selectedIndex = currentOptionIndex + 1; // Выберите следующий <option>
                 }
             });
+        })
 
-            $('#room_2').change(function () {
-                let selectedRoom = $(this).val();
+        endBtn.forEach(i => {
+            i.addEventListener('click', () => {
+                showStep(9);
+                room.value + 1
+            })
+        })
 
-                if (selectedRoom === 'Bedroom') {
-                    showStep(0); // Открываем шаг 0 для Bedroom
-                } else if (selectedRoom === 'Walk-in') {
-                    showStep(3); // Открываем шаг 3 для Walk-in
-                }
-            });
+        nextButton.forEach(i => {
+            i.addEventListener('click', function () {
 
-            // Обработчик клика по кнопке "Next"
-            $('.formQuiz__btn_go').click(function () {
-                if (currentStep < steps.length - 1) {
-                    let selectedRoom = $('#room').val();
-
-                    if (currentStep === 0) {
-                        // Обработчик выбора опции в селекте
-                        if (selectedRoom === 'Bedroom') {
-                            // Если выбрана опция "Bedroom", открываем соответствующие шаги
-                            showStep(0); // formQuiz__step_2_1
-                            let selectedImageSrc = document.querySelector('.formQuizVar__item_1choose .formQuizVar__input:checked + .formQuizVar__img');
-                            if (selectedImageSrc) {
-                                let src = selectedImageSrc.getAttribute('src');
-                                document.querySelector('.bedroomSelectedImg').src = src;
-                                console.log(src + '1')
-                                if (src.endsWith('1.1.png') || src.endsWith('1.2.png')) {
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_a').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'block';
-                                } else if (src.endsWith('1.3.png')) {
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_d').style.display = 'block';
-                                } else if (src.endsWith('1.4.png')) {
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_a').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'block';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_d').style.display = 'block';
-                                } else {
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_a').style.display = 'none';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_b').style.display = 'none';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_c').style.display = 'none';
-                                    document.querySelector('.bottomInputs_1 .bottomInputs__input_d').style.display = 'none';
-                                }
-                            }
-                        } else if (selectedRoom === 'Walk-in') {
-                            // Если выбрана опция "Walk-in", открываем соответствующие шаги
-                            showStep(3); // formQuiz__step_3_1
-                        }
-                    }
-
-                    if (currentStep === 3) {
-                        let selectedImageSrc = document.querySelector('.formQuizVar__item_2choose .formQuizVar__input:checked + .formQuizVar__img');
-                        if (selectedImageSrc) {
-                            let src = selectedImageSrc.getAttribute('src');
-                            document.querySelector('.walkInSelectedImg').src = src;
-                            console.log(src + '2')
-                            if (src.endsWith('1.1.png') || src.endsWith('1.2.png')) {
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_a').style.display = 'block';
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'block';
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'block';
-                            } else if (src.endsWith('1.3.png')) {
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'block';
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'block';
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_d').style.display = 'block';
-                            } else if (src.endsWith('1.4.png')) {
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_a').style.display = 'block';
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'block';
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'block';
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_d').style.display = 'block';
-                            } else {
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_a').style.display = 'none';
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_b').style.display = 'none';
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_c').style.display = 'none';
-                                document.querySelector('.bottomInputs_2 .bottomInputs__input_d').style.display = 'none';
-                            }
-                        }
-                    }
-
-                    // Скрываем текущий шаг и открываем следующий
+                if (currentStep != 0) {
                     showStep(currentStep + 1);
                 }
+                else if (currentStep === 0) {
+                    const roomStepMap = {
+                        'ChambreRoom1': 0,
+                        'ChambreRoom2': 2,
+                        'ChambreRoom3': 4,
+                        'ChambreRoom4': 6,
+                    };
+                    const selectedRoom = room.value;
+                    const step = roomStepMap[selectedRoom];
+
+
+                    if (step !== undefined) {
+                        showStep(step);
+                    }
+                    const roomImageSelectors = {
+                        0: '.ChambreRoom1SelectedImg',
+                        2: '.ChambreRoom2SelectedImg',
+                        4: '.ChambreRoom3SelectedImg',
+                    };
+
+                    const bottomInputsSelectors = {
+                        0: '.bottomInputs_1',
+                        2: '.bottomInputs_2',
+                        4: '.bottomInputs_3',
+                    };
+
+                    const roomImageSelector = roomImageSelectors[currentStep];
+                    const bottomInputsSelector = bottomInputsSelectors[currentStep];
+
+                    let selectedImageSrcSelector = `.formQuizVar__item`;
+
+
+                    console.log(currentStep + ' hi');
+
+                    const selectedImageSrc = document.querySelector(`${selectedImageSrcSelector} .formQuizVar__input:checked + .formQuizVar__img`);
+                    if (selectedImageSrc) {
+
+                        const src = selectedImageSrc.getAttribute('data-src');
+                        document.querySelector(roomImageSelector).src = src;
+
+                        let inputs = document.querySelectorAll(`${bottomInputsSelector} .bottomInputs__input`);
+                        inputs.forEach((input) => {
+                            const inputClass = input.className;
+                            if (src.endsWith('1.1.png') || src.endsWith('1.2.png')) {
+                                input.style.display = inputClass.includes('bottomInputs__input_a') || inputClass.includes('bottomInputs__input_b') || inputClass.includes('bottomInputs__input_c') ? 'block' : 'none';
+                            } else if (src.endsWith('1.3.png')) {
+                                input.style.display = inputClass.includes('bottomInputs__input_b') || inputClass.includes('bottomInputs__input_c') || inputClass.includes('bottomInputs__input_d') ? 'block' : 'none';
+                            } else if (src.endsWith('1.4.png')) {
+                                input.style.display = inputClass.includes('bottomInputs__input_a') || inputClass.includes('bottomInputs__input_b') || inputClass.includes('bottomInputs__input_c') || inputClass.includes('bottomInputs__input_d') ? 'block' : 'none';
+                            } else {
+                                input.style.display = 'none';
+                            }
+                        });
+                    }
+                    showStep(currentStep + 1);
+                }
+                else {
+                    return
+                }
+            });
+        })
+
+        backButton.forEach(i => {
+            i.addEventListener('click', function () {
+                if (currentStep <= 0) return;
+                showStep(currentStep - 1);
+            });
+        })
+
+        // Получите все элементы счетчиков на странице
+        const counters = document.querySelectorAll('.counter');
+
+        // Для каждого счетчика
+        counters.forEach((counter, index) => {
+            // Получите элементы кнопок и поле ввода в текущем счетчике
+            const decrementBtn = counter.querySelector('.decrement');
+            const incrementBtn = counter.querySelector('.increment');
+            const countInput = counter.querySelector('.count');
+
+            // Установите начальное значение для каждого счетчика (например, начнем с нуля)
+            let count = 0;
+
+            // Обработчик для уменьшения счетчика
+            decrementBtn.addEventListener('click', () => {
+                if (count > 0) {
+                    count--;
+                    countInput.value = count;
+                }
             });
 
-
-
-
-            // Обработчик клика по кнопке "Back"
-            $('.formQuiz__btn_back').click(function () {
-                if (currentStep > 0) {
-                    // Скрываем текущий шаг и открываем предыдущий
-                    showStep(currentStep - 1);
-
-                    document.querySelector('.bottomInputs__input_a').style.display = 'none';
-                    document.querySelector('.bottomInputs__input_b').style.display = 'none';
-                    document.querySelector('.bottomInputs__input_c').style.display = 'none';
-                    document.querySelector('.bottomInputs__input_d').style.display = 'none';
+            // Обработчик для увеличения счетчика
+            incrementBtn.addEventListener('click', () => {
+                if (count < 100) {
+                    count++;
+                    countInput.value = count;
                 }
+            });
+        });
+
+        // Получите все контейнеры с классом "formQuizVar__item"
+        const containers = document.querySelectorAll('.formQuiz__body_3 .formQuizVar__item');
+
+        containers.forEach((container) => {
+            // Найдите чекбокс в текущем контейнере
+            const checkbox = container.querySelector('.formQuizVar__input');
+            // Найдите счетчик в текущем контейнере
+            const counter = container.querySelector('.counter');
+
+            // Обработчик для изменения состояния счетчика при изменении состояния чекбокса
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    // Если чекбокс отмечен, покажите счетчик
+                    counter.style.display = 'flex';
+                } else {
+                    // Если чекбокс не отмечен, скройте счетчик
+                    counter.style.display = 'none';
+                }
+            });
+        });
+
+        // Найдите все элементы input с классом "formQuizVarBottom__input"
+        const numberInputs = document.querySelectorAll('.formQuizVarBottom__input');
+
+        numberInputs.forEach((input) => {
+            // Добавьте обработчик события для валидации ввода
+            input.addEventListener('input', function () {
+                // Получите введенное значение и преобразуйте его в число
+                let value = parseInt(input.value, 10);
+
+                // Проверьте, находится ли значение в диапазоне от 0 до 30
+                if (isNaN(value) || value < 0) {
+                    value = 0;
+                } else if (value > 30) {
+                    value = 30;
+                }
+
+                // Установите скорректированное значение обратно в поле ввода
+                input.value = value;
             });
         });
     </script>
