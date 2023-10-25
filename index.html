@@ -1625,21 +1625,21 @@
               <input
                 class="formQuiz__formInput"
                 type="text"
-                name="name"
+                name="NAME"
                 id=""
                 placeholder="Votre nom | Your name"
               />
               <input
                 class="formQuiz__formInput"
                 type="tel"
-                name="phone"
+                name="PHONE"
                 id=""
                 placeholder="Téléphone | Phone"
               />
               <input
                 class="formQuiz__formInput"
                 type="text"
-                name="email"
+                name="EMAIL"
                 id=""
                 placeholder="Email"
               />
@@ -1915,16 +1915,13 @@
       document
         .getElementById("bitrix24-form")
         .addEventListener("submit", function (event) {
-          event.preventDefault(); // Предотвращаем стандартное действие формы
+          event.preventDefault(); 
 
-          // Ваши данные для отправки в Bitrix24
           const bitrix24Endpoint =
             "https://closets.bitrix24.com/rest/461/smv6jwhnkrbh5ugn/crm.deal.add.json";
 
-          // Собираем данные из формы
           const formData = new FormData(this);
 
-          // Создаем запрос к API Bitrix24
           fetch(bitrix24Endpoint, {
             method: "POST",
             body: formData,
