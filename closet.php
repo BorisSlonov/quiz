@@ -160,7 +160,6 @@ curl_setopt_array($curl, array(
     CURLOPT_URL => $queryURL,
     CURLOPT_POSTFIELDS => $queryData,
 ));
-var_dump(curl_exec($curl));
 
 $result = curl_exec($curl);
 curl_close($curl);

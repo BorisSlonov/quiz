@@ -284,7 +284,7 @@
 
   <body>
 
-    <form method="post" action="closet.php" id="bitrix24-form">
+    <form  id="bitrix24-form">
       <div class="formQuiz">
         <div class="formQuiz__step formQuiz__step_1">
           <div class="formQuiz__header">
@@ -1913,28 +1913,28 @@
     </script>
 
     <script>
-      // document
-      //   .getElementById("bitrix24-form")
-      //   .addEventListener("submit", function (event) {
-      //     event.preventDefault(); 
+      document
+        .getElementById("bitrix24-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); 
 
-      //     const bitrix24Endpoint =
-      //       "https://sk-megastroi.ru/closet.php";
+          const bitrix24Endpoint =
+            "https://sk-megastroi.ru/closet.php";
 
-      //     const formData = new FormData(this);
+          const formData = new FormData(this);
 
-      //     fetch(bitrix24Endpoint, {
-      //       method: "POST",
-      //       body: formData,
-      //     })
-      //       .then((response) => response.json())
-      //       .then((data) => {
-      //         alert('Thanks!')
-      //       })
-      //       .catch((error) => {
-      //         alert("Ошибка при отправке запроса в Bitrix24: " + error);
-      //       });
-      //   });
+          fetch(bitrix24Endpoint, {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              alert('Thanks!')
+            })
+            .catch((error) => {
+              alert("Ошибка при отправке запроса в Bitrix24: " + error);
+            });
+        });
     </script>
   </body>
 </html>
